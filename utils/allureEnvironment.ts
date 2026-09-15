@@ -8,7 +8,7 @@ export function createAllureEnvironment(): void {
     fs.mkdirSync(resultsDir, { recursive: true });
 
     const environment = [
-        'Application=NovaAid',
+        'Application=Automation Test suite',
         `Environment=${process.env.TEST_ENV ?? 'QA'}`,
         `Browser=${process.env.BROWSER ?? 'Chromium'}`,
         'Framework=Playwright',
