@@ -32,10 +32,28 @@ test.beforeEach(async ({}, testInfo) => {
     );
 });
 
-test.afterEach(async ({}, testInfo) => {
+test.afterEach(async ({ page }, testInfo) => {
+
     Logger.info(
         `[Worker ${testInfo.workerIndex}] END: ${testInfo.title} | Status: ${testInfo.status}`
     );
+
+    // Attach screenshot to Allure when test fails unexpectedly
+    if (testInfo.status !== testInfo.expectedStatus) {
+
+        const screenshotPath =
+            testInfo.outputPath('failure-screenshot.png');
+
+        await page.screenshot({
+            path: screenshotPath,
+            fullPage: true
+        });
+
+        await testInfo.attach('Failure Screenshot', {
+            path: screenshotPath,
+            contentType: 'image/png'
+        });
+    }
 });
 
 export { expect };

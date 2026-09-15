@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 export default defineConfig({
-
+      globalSetup: require.resolve('./global-setup'),
     testDir: './tests',
        workers: process.env.CI ? 2 : undefined,
 
@@ -42,9 +42,12 @@ export default defineConfig({
         },
     ],
 
-    reporter: [
-        ['list'],
-        ['html', { open: 'never' }]
-    ],
+   reporter: [
+    ['list'],
+    ['html', { open: 'never' }],
+    ['allure-playwright', {
+        resultsDir: 'allure-results',
+    }],
+],
 
 });
