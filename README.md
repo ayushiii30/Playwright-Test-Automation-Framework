@@ -401,7 +401,6 @@ stored in source code.
 -   Enhanced test data management
 -   Environment-specific configuration
 -   Test tagging and selective execution
--   Allure reporting
 -   Dockerized test execution
 -   Advanced CI/CD stages
 -   Scheduled regression execution
