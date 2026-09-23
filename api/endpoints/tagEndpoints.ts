@@ -34,7 +34,7 @@ export class TagEndpoints {
             },
         });
     }
-    
+
     async updateTag(
     tagId: string,
     workspaceId: string,
@@ -49,6 +49,18 @@ export class TagEndpoints {
             name,
             description,
         },
+    });
+}
+
+async archiveTag(
+    tagId: string,
+    workspaceId: string
+) {
+    return await this.api.delete(`/api/tag/${tagId}`, {
+        params: {
+            workspace_id: workspaceId,
+        },
+        data: {},
     });
 }
 }
